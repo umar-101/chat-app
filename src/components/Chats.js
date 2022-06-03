@@ -3,9 +3,13 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 import { ChatEngine } from "react-chat-engine";
+import { useAuth } from "../contexts/AuthContext";
 
 const Chats = () => {
   const history = useHistory();
+
+  const { user } = useAuth();
+  console.log(user);
   const handleLogout = async () => {
     await auth.signOut();
 
