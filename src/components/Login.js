@@ -1,17 +1,30 @@
 import React from "react";
 
 import { GoogleOutlined, FacebookOutlined } from "@ant-design/icons";
+import "firebase/app";
+import { auth } from "../firebase";
+import firebase from "firebase/app";
 
 const Login = () => {
   return (
     <div id="login-page">
       <div id="login-card">
         <h2>Welcome to the Chatty!</h2>
-        <div className="login-button google">
+        <div
+          className="login-button google"
+          onClick={() =>
+            auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
+          }
+        >
           <GoogleOutlined /> Signed in with Google
         </div>
-        <br></br>
-        <div className="login-button facebook">
+        <br />
+        <div
+          className="login-button facebook"
+          onClick={() =>
+            auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())
+          }
+        >
           <FacebookOutlined /> Signed in with Facebook
         </div>
       </div>
